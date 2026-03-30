@@ -1,6 +1,5 @@
 require('dotenv').config({ override: true });
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 
@@ -17,12 +16,7 @@ const authRoutes = require('./routes/auth');
 app.use('/api/nodes', nodeRoutes);
 app.use('/api/auth', authRoutes);
 
-// MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/microdoc';
-
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+// MongoDB Connection Block Removed - Running in pure memory structure.
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
